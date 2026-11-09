@@ -15,6 +15,14 @@ Four sources are aggregated:
 - **One Mile at a Time (OMAAT):** conservative
 - **View From The Wing (VFTW):** most conservative and theoretically rigorous
 
+Separately, many entries carry an **`awardwallet`** object (average cpp actually realized on
+AwardWallet users' bookings, split regional/global × economy-premium/business-first, with sample
+size). It is redemption-based and runs well above the publications, so it is **not** part of
+floor/ceiling. Use it as a "typical real redemption" benchmark — e.g. compare a premium-cabin
+award's cpp against `global_business_first`. Refresh from the keyless API
+`https://loyalty.awardwallet.com/v1/point-mile-values/list`. Attribution required when shown:
+"Point and mile values are calculated and managed by AwardWallet." (awardwallet.com/point-mile-values)
+
 Each entry has:
 - `floor` — conservative minimum (use this for decision-making)
 - `ceiling` — optimistic maximum
