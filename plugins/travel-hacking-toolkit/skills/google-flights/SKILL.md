@@ -100,6 +100,8 @@ agent-browser --session flights snapshot -i
 
 ### Reading Results from Snapshot
 
+**If the snapshot shows the "Search results" heading with only a "Reload" button and no flight links, the results pane failed to load (the "Oops, something went wrong" state — the form parsed fine; only results failed). Click "Reload" once and re-snapshot.** If results still don't appear, this is Google soft-blocking automated traffic on the results endpoint — not a bad route or date. Don't keep hammering it; see Troubleshooting.
+
 Each flight appears as a `link` element with a full description:
 
 ```
@@ -157,7 +159,39 @@ agent-browser --session econ snapshot -i  # Shows booking providers with prices 
 
 ## Interactive Workflow (Fallback)
 
-Use for multi-city, premium economy, or when the URL path fails. See the google-flights skill in ajimix/travel-hacking-toolkit for the full interactive reference with step-by-step commands for form filling, date pickers, and multi-city searches.
+Use for multi-city, premium economy, or when the URL fast path fails. Drive the form directly instead of relying on the `?q=` parameter:
+
+```bash
+# 1. Open the flights home and snapshot the form
+agent-browser --session flights open "https://www.google.com/travel/flights"
+agent-browser --session flights wait --load networkidle
+agent-browser --session flights snapshot -i
+
+# 2. Set trip type / cabin if needed (click the control, re-snapshot, click the option)
+agent-browser --session flights click @eN      # e.g. the "Round trip" / "Economy" dropdown
+agent-browser --session flights snapshot -i
+agent-browser --session flights click @eN      # the desired option (One way, Multi-city, Business, etc.)
+
+# 3. Fill origin and destination (use fill, not type — it clears existing text)
+agent-browser --session flights fill @eN "BKK"
+agent-browser --session flights wait 2000       # autocomplete needs an API roundtrip
+agent-browser --session flights snapshot -i
+agent-browser --session flights click @eN       # CLICK the suggestion, never press Enter
+# repeat for the destination field
+
+# 4. Open the date picker, snapshot, click the departure and return dates
+agent-browser --session flights click @eN
+agent-browser --session flights snapshot -i
+agent-browser --session flights click @eN       # departure date cell
+agent-browser --session flights click @eN       # return date cell (round trip)
+
+# 5. Search and read results
+agent-browser --session flights click @eN       # "Search" / "Done"
+agent-browser --session flights wait --load networkidle
+agent-browser --session flights snapshot -i
+```
+
+For **multi-city**, pick "Multi-city" in step 2, then repeat steps 3–4 for each leg (the form adds a new origin/destination/date row per leg). Re-snapshot after every interaction — refs (`@eN`) change as the DOM updates. The same primitives in the Key Rules table below apply throughout.
 
 ## Key Rules
 
@@ -173,6 +207,7 @@ Use for multi-city, premium economy, or when the URL path fails. See the google-
 
 ## Troubleshooting
 
+- **"Oops, something went wrong" / empty results with a "Reload" button**: The form populates correctly (origin, destination, dates all right) but the results pane fails to load. This is Google rate-limiting / bot-detecting automated browser traffic on the results endpoint — it is **not** a date or route error, and no CAPTCHA is shown. Clicking the "Reload" button under "Search results" + re-snapshot *sometimes* clears it (mainly on a cold first request); under repeated automated use the state persists and Reload does not help. Mitigations: reduce parallel sessions (run one at a time, not econ+biz together), space out requests, and retry after a pause. If it stays blocked, fall back to the interactive workflow or — better — to another flight source (Duffel, Ignav, Skiplagged, Kiwi) that doesn't depend on scraping Google.
 - **Consent popups**: Click "Accept all" or "Reject all" in the snapshot.
 - **URL fast path didn't work**: Fall back to interactive.
 - **Bot detection / CAPTCHA**: Inform user. Do NOT solve CAPTCHAs.
