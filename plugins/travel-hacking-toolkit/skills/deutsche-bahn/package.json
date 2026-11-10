@@ -4,6 +4,6 @@
   "description": "Deutsche Bahn train search for the travel hacking toolkit",
   "type": "module",
   "dependencies": {
-    "db-vendo-client": "^6.10.8"
+    "db-vendo-client": "^6.10.11"
   }
 }
