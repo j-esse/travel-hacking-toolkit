@@ -133,7 +133,16 @@ the total for the stay. `/search` returns `{properties: [...]}` with the same pe
 The plugin's `.mcp.json` also registers `flightpowers-flights` (`https://flights.flightpowers.com/mcp`)
 and `flightpowers-hotels` (`https://hotels.flightpowers.com/mcp`). After a one-time Google sign-in
 (`/mcp` → server → Authenticate), each gives **10 free searches/day** (resets 00:00 UTC; one search =
-one date × destination), separate from the RapidAPI quota. Same data as the APIs above. Prefer the MCP
+one date × destination), separate from the RapidAPI quota. Same data as the APIs above.
+
+**Sign-in quirk (2026-11-11):** flightpowers matches redirect URIs exactly, but Claude Code's default
+client metadata lists port-less loopback URIs (`http://localhost/callback`) and signs in on a random
+port, so the default flow fails with *"that redirect_uri is not listed in the client metadata document"*.
+`.mcp.json` therefore pins pre-registered public clients (dynamic registration, no secret) with
+`oauth.clientId` + `oauth.callbackPort: 8765`. If sign-in breaks again, register a new client:
+`curl -X POST https://flights.flightpowers.com/oauth/register -H 'Content-Type: application/json' -d
+'{"redirect_uris":["http://localhost:8765/callback"],"token_endpoint_auth_method":"none","grant_types":["authorization_code","refresh_token"],"response_types":["code"]}'`
+and update the `clientId` (same for `hotels.`). Prefer the MCP
 for ad-hoc searches and keep the RapidAPI calls for scripts.
 
 ## When to Use

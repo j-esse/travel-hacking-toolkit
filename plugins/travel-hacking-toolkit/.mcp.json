@@ -33,11 +33,19 @@
     },
     "flightpowers-flights": {
       "type": "http",
-      "url": "https://flights.flightpowers.com/mcp"
+      "url": "https://flights.flightpowers.com/mcp",
+      "oauth": {
+        "clientId": "fpcl_J0w9IZqpcLCYLc1y67T3na4r19ySIequ3Y3EZijwUkQ",
+        "callbackPort": 8765
+      }
     },
     "flightpowers-hotels": {
       "type": "http",
-      "url": "https://hotels.flightpowers.com/mcp"
+      "url": "https://hotels.flightpowers.com/mcp",
+      "oauth": {
+        "clientId": "fpcl_lbtD_Vay1zSbL_oaCCqgjGIiH13l9ENIKz8EG0yGFPA",
+        "callbackPort": 8765
+      }
     }
   }
 }
