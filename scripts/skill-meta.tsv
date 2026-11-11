@@ -8,6 +8,7 @@ trip-log	orchestration	Opt-in trip journal. Save searches and booked trips to tr
 trip-planner	orchestration	Full trip planning. Flights + hotels + points in one shot.	Uses individual skill keys	
 duffel	flights	Primary cash prices. Real GDS per-fare-class data.	Duffel	
 google-flights	flights	Browser-automated Google Flights. All airlines including Southwest.	None (requires agent-browser)	
+google-flights-scraper	flights	Google Flights via REST, with per-seller fare brands (Basic vs Standard) and bag fees. 1,000 free calls/month.	RapidAPI (1,000 free)	
 ignav	flights	Fast REST API cash prices. Market selection for arbitrage.	Ignav (1,000 free)	
 seats-aero	flights	Award availability across 27 mileage programs. Partner API, plus the official MCP (keyless for the next 60 days, Pro sign-in for live search and alerts).	Seats.aero Pro/Partner (MCP free for 60 days)	
 seatmaps	flights	Aircraft seat maps, cabin dimensions, seat recommendations.	None (requires agent-browser)	

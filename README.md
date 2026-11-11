@@ -183,6 +183,7 @@ Start here: the **orchestration skills** call everything else automatically.
 |-------|-------------|---------|
 | **duffel** | Primary cash prices. Real GDS per-fare-class data. | Duffel |
 | **google-flights** | Browser-automated Google Flights. All airlines including Southwest. | None (requires agent-browser) |
+| **google-flights-scraper** | Google Flights via REST, with per-seller fare brands (Basic vs Standard) and bag fees. 1,000 free calls/month. | RapidAPI (1,000 free) |
 | **ignav** | Fast REST API cash prices. Market selection for arbitrage. | Ignav (1,000 free) |
 | **seatmaps** | Aircraft seat maps, cabin dimensions, seat recommendations. | None (requires agent-browser) |
 | **seats-aero** | Award availability across 27 mileage programs. Partner API, plus the official MCP (keyless for the next 60 days, Pro sign-in for live search and alerts). | Seats.aero Pro/Partner (MCP free for 60 days) |
@@ -271,7 +272,8 @@ These skills require an external account or API key signup. See [`.env.example`]
 | `duffel` | Duffel | [duffel.com](https://duffel.com) | Real GDS flight search. Free tier available. |
 | `ignav` | Ignav | [ignav.com](https://ignav.com) | Fast flight search REST API. 1,000 free requests, no credit card. |
 | `seats-aero` | Seats.aero | [seats.aero](https://seats.aero) | Award flight availability across 27 mileage programs. Pro tier ($99/yr) includes API access. |
-| `rapidapi` | RapidAPI | [rapidapi.com](https://rapidapi.com) | Marketplace; subscribe to Booking.com Live + Google Flights Live. |
+| `rapidapi` | RapidAPI | [rapidapi.com](https://rapidapi.com) | Marketplace; subscribe to Booking.com Live + Google Flights Live (mtnrabi). |
+| `google-flights-scraper` | Google Flights Scraper (RapidAPI) | [rapidapi.com/OmkarCloud/api/best-google-flights-scraper-free-1000-calls](https://rapidapi.com/OmkarCloud/api/best-google-flights-scraper-free-1000-calls) | Same RAPIDAPI_KEY; subscribe to the free Basic plan (1,000 calls/month). |
 | `serpapi` | SerpAPI | [serpapi.com](https://serpapi.com) | Google Flights, Google Hotels, Travel Explore. |
 | `tripadvisor` | TripAdvisor | [www.tripadvisor.com/developers](https://www.tripadvisor.com/developers) | Hotel/restaurant/attraction data. 5K calls/month free. |
 | `awardwallet` | AwardWallet | [business.awardwallet.com](https://business.awardwallet.com) | Loyalty program balance aggregator. Business tier required. |

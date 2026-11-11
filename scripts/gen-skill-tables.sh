@@ -250,7 +250,8 @@ signup_links_data() {
 duffel|Duffel|https://duffel.com|Real GDS flight search. Free tier available.
 ignav|Ignav|https://ignav.com|Fast flight search REST API. 1,000 free requests, no credit card.
 seats-aero|Seats.aero|https://seats.aero|Award flight availability across 27 mileage programs. Pro tier ($99/yr) includes API access.
-rapidapi|RapidAPI|https://rapidapi.com|Marketplace; subscribe to Booking.com Live + Google Flights Live.
+rapidapi|RapidAPI|https://rapidapi.com|Marketplace; subscribe to Booking.com Live + Google Flights Live (mtnrabi).
+google-flights-scraper|Google Flights Scraper (RapidAPI)|https://rapidapi.com/OmkarCloud/api/best-google-flights-scraper-free-1000-calls|Same RAPIDAPI_KEY; subscribe to the free Basic plan (1,000 calls/month).
 serpapi|SerpAPI|https://serpapi.com|Google Flights, Google Hotels, Travel Explore.
 tripadvisor|TripAdvisor|https://www.tripadvisor.com/developers|Hotel/restaurant/attraction data. 5K calls/month free.
 awardwallet|AwardWallet|https://business.awardwallet.com|Loyalty program balance aggregator. Business tier required.
