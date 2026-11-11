@@ -44,7 +44,7 @@ Run these in parallel where possible. **Never fail silently.**
 | SerpAPI | `serpapi` | ~3s | Google Hotels cash prices and direct booking links. |
 | Trivago | web search | ~5s | Metasearch across many OTAs. Use tavily/exa to search `trivago.com`. Finds the absolute cheapest OTA rate. |
 | LiteAPI | web search | ~5s | Hotel API aggregator with negotiated rates. Check `liteapi.travel`. Can find rates below public OTA pricing. |
-| RapidAPI | `rapidapi` | ~3s | Booking.com inventory and pricing. Optional, use when user asks for Booking.com specifically. |
+| RapidAPI | `rapidapi` | ~30s | Booking.com inventory and pricing. Optional, use when user asks for Booking.com specifically. |
 
 ### Quality and Ratings
 
