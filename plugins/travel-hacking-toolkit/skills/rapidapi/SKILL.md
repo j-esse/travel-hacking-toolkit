@@ -128,6 +128,14 @@ curl -s -X POST "https://booking-live-api.p.rapidapi.com/hotel_by_name" \
 review_count, link, nights}`. **Check `matched_name`** before trusting the price. `price` is
 the total for the stay. `/search` returns `{properties: [...]}` with the same per-property fields.
 
+## Hosted MCP alternative (same provider, no RapidAPI quota)
+
+The plugin's `.mcp.json` also registers `flightpowers-flights` (`https://flights.flightpowers.com/mcp`)
+and `flightpowers-hotels` (`https://hotels.flightpowers.com/mcp`). After a one-time Google sign-in
+(`/mcp` → server → Authenticate), each gives **10 free searches/day** (resets 00:00 UTC; one search =
+one date × destination), separate from the RapidAPI quota. Same data as the APIs above. Prefer the MCP
+for ad-hoc searches and keep the RapidAPI calls for scripts.
+
 ## When to Use
 
 - **Google Flights Live**: second opinion on cash fares, or the Google Flights source when SerpAPI

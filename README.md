@@ -151,6 +151,8 @@ source .env && codex
 | [Airbnb](https://github.com/openbnb-org/mcp-server-airbnb) | Search Airbnb listings, property details, pricing. Includes geocoding fix, property type filter, and DISABLE_GEOCODING opt-out. | None (free) |
 | [Seats.aero](https://seats.aero/mcp) | Official award search MCP. Cached availability for the next 60 days with no sign-in. Pro sign-in (OAuth) adds live search, alerts, award hotels, upgrades, and deals. | None for 60 days. Seats.aero Pro for the rest |
 | [LiteAPI](https://mcp.liteapi.travel) | Hotel search with live rates and booking | [LiteAPI](https://liteapi.travel) |
+| [flightpowers flights](https://flightpowers.com) | Live Google Flights search (one-way, round trip, multi-airport) with Google's price verdict | None. Google sign-in (OAuth), 10 free searches/day |
+| [flightpowers hotels](https://flightpowers.com) | Live Booking.com hotel prices by name or destination | None. Google sign-in (OAuth), 10 free searches/day |
 
 ### Skills (API knowledge for your AI)
 
