@@ -30,6 +30,14 @@
     "seats-aero": {
       "type": "http",
       "url": "https://seats.aero/mcp"
+    },
+    "flightpowers-flights": {
+      "type": "http",
+      "url": "https://flights.flightpowers.com/mcp"
+    },
+    "flightpowers-hotels": {
+      "type": "http",
+      "url": "https://hotels.flightpowers.com/mcp"
     }
   }
 }
